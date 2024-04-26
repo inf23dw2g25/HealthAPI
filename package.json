@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth2": "^0.2.0"
+  },
+  "name": "healthapi",
+  "description": "Health ApI for UC of Web Dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inf23dw2g25/HealthAPI.git"
+  },
+  "keywords": [
+    "Health",
+    "Consultations",
+    "api"
+  ],
+  "author": "Grupo 25",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inf23dw2g25/HealthAPI/issues"
+  },
+  "homepage": "https://github.com/inf23dw2g25/HealthAPI#readme"
+}
