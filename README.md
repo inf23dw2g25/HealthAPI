@@ -24,12 +24,47 @@ O objetivo do **HealthConsultationAPI** é fornecer uma plataforma segura e efic
 A API disponibiliza os seguintes recursos:
 
 1. **Consulta**: Permite a marcação, visualização, atualização e exclusão de consultas médicas que tem uma relacao de muitos para um com especialista e paciente .
+* Obter todas
+* Criar
+* Editar
+* Apagar
+* Obter Especifica
+
 2. **Paciente**: Permite a visualização do histórico médico de um paciente com uma relacao de 1 para 1.
+* Obter todos
+* Criar
+* Editar
+* Apagar
+* Obter Especifico
+* Obter Consultas do Paciente
+* Obter Historico do Paciente
+
 3. **Especialista**: Permite a visualização dos especialistas disponíveis.
+* Obter todos
+* Criar
+* Editar
+* Apagar
+* Obter Especifico
+* Obter Consultas do Especialista
+
 4. **Especialidade**: Permite a visualização das especialidades médicas disponíveis relação de 1 para muitos com o especialista.
-5. **Historico**: Permite a visualização do Histórico do paciente relacao de um para um com o paciente.
+* Obter todas
+* Criar
+* Editar
+* Apagar
+* Obter Especifica
+* Obter Especialistas por especialidade.
+
+5. **Historico**: Permite a visualização do Histórico do paciente relacao de um para um com o paciente o histórico é como se fosse um livro com a ficha do paciente.
+* Obter todos
+* Criar
+* Editar
+* Apagar
+* Obter Especifico
 
 ![Diagrama de Classes](./relatórios%20e%20documentos/Diagrama%20de%20classes.png)
+
+
 
 
 ### Autenticação e Autorização
