@@ -1,4 +1,4 @@
-FROM mysql:5.7
+FROM inf2023dw2g25/healthapi:healthapi-mysql
 
 # Set the environment variables
 ENV MYSQL_ROOT_PASSWORD=root

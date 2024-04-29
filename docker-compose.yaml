@@ -1,32 +1,45 @@
-version: "3.8"
+version: '3.8'
 
 services:
-    mysqldb:
-        build:
-            context: ./
-            dockerfile: mysql.dockerfile
-        platform: linux/x86_64
-        container_name: healthapi-mysql
-        ports:
-            - 3306:3306
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-            timeout: 5s
-            retries: 10
-    app:
-        depends_on:
-            mysqldb:
-                condition: service_healthy
-        build:
-            context: ./
-            dockerfile: node.dockerfile
-        working_dir: /usr/src/healthapi
-        container_name: healthapi-api
-        env_file: ./.env
-        ports:
-            - 3000:3000
-        stdin_open: true
-        tty: true
-        volumes:
-            - ./controller:/usr/src/healthapi/controller
-            - ./routes:/usr/src/healthapi/routes
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql.dockerfile
+    container_name: mysql_healthapi
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    healthcheck:
+          test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+          timeout: 5s
+          retries: 10
+    networks:
+      - healthapi-network
+
+  node:
+    depends_on:
+      mysql:
+       condition: service_healthy
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    container_name: node_healthapi
+    environment:
+      NODE_PORT: ${NODE_PORT}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_CALLBACK_URI: ${GOOGLE_CALLBACK_URI}
+      SESSION_SECRET: ${SESSION_SECRET}
+      PROTOCOL: ${PROTOCOL}
+      ENV: ${ENV}
+      HOSTNAME: ${HOSTNAME}
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    networks:
+      - healthapi-network
+
+networks:
+  healthapi-network:
+    driver: bridge

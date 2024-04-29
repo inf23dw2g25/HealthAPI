@@ -1,8 +1,7 @@
-DROP DATABASE IF EXISTS healthapi
+DROP DATABASE IF EXISTS healthapi;
 
-CREATE DATABASE healthapi
-
-use healthapi
+CREATE DATABASE healthapi;
+use healthapi;
 
 CREATE TABLE Paciente (
     id INT PRIMARY KEY AUTO_INCREMENT,
