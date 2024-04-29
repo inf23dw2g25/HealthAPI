@@ -31,6 +31,7 @@ A API disponibiliza os seguintes recursos:
 
 ![Diagrama de Classes](./relatórios%20e%20documentos/Diagrama%20de%20classes.png)
 
+
 ### Autenticação e Autorização
 
 A API implementa uma camada de autenticação e autorização utilizando OAuth 2.0 da google. Os usuários devem autenticar-se para acessar os recursos da API e apenas têm acesso aos seus próprios recursos.
@@ -46,7 +47,20 @@ A API é documentada utilizando o formato OpenAPI 3.0. A documentação detalha 
 
 ## Instruções
 
+1. faça o clone do repositório
+~~~CMD
+git clone https://github.com/inf23dw2g25/HealthAPI
+~~~
 
+2. entre na pasta clonada
+~~~CMD
+cd HealthAPI
+~~~
+
+3. Para este passo o docker precisa de estar a correr . 
+~~~CMD
+docker compose up --build
+~~~
 
 ## Conclusão
 
