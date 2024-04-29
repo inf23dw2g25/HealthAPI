@@ -1,27 +1,49 @@
-const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerJSDoc = require("swagger-jsdoc");
+require('./environmentController');
+// swaggerSpecs.js
 
-// Defina as opções de configuração para o Swagger
-const options = {
-  swaggerDefinition: {
-    openapi: '3.0.0', // Versão do OpenAPI Specification
+const swaggerDefinition = {
+    openapi: "3.0.0",
     info: {
-      title: 'HealthApi',
-      version: '1.0.0',
-      description: 'Uma API de gestão de consultas',
+      title: "HealthApi",
+      version: "1.0.0",
+      description: "Consultas e Históricos",
+      contact: { name: "Grupo 25" },
     },
     servers: [
       {
-        url: 'http://localhost:3000', // URL base da sua API
-        description: 'Servidor local',
+        url: `${process.env.PROTOCOL}://${process.env.HOSTNAME}:${process.env.NODE_PORT}`,
+        description: `${process.env.ENV} mode Server.`,
       },
     ],
-  },
-  // Caminho para os arquivos de código-fonte que contêm as rotas da API
-  apis: ['./routes/*.js'],
-};
+    components: {
+      securitySchemes: {
+        OAuth2: {
+          type: "oauth2",
+          flows: {
+            implicit: {
+              authorizationCode: {
+                authorizationUrl: "http://localhost:3000/auth/google?scope=email",
+                scopes: {
+                  mail: "Aqui tera acesso ao email do utilizador",
+                  profile: "Aqui tera acesso ao perfile do utilizador",
+                  read: "Para ler os recursos ",
+                  write: "Para escrever nos recursos"
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    security: [{ OAuth2: [] }],
+  };
+  
+  const swaggerOptions = {
+    swaggerDefinition,
+    apis: ["./docs/**/*.yaml"], // Substitua pelo caminho correto para seus arquivos YAML
+  };
+  
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
-// Gere as especificações do Swagger
-const swaggerSpec = swaggerJSDoc(options);
-
-// Exporte as especificações do Swagger
 module.exports = swaggerSpec;

@@ -3,7 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 
 router.get('/', (req,res) =>{
-    res.send('<a href="/auth/google"> Entre com o Google')
+    res.send('<a href="/auth/google?scope=email"> Entre com o Google')
 });
 
 router.get('/auth/google', 
@@ -13,6 +13,15 @@ router.get('/auth/google',
 router.get('/google/callback',
     passport.authenticate('google', {
         successRedirect: '/protected',
+        failureRedirect:'/auth/failure'
+    })
+)
+
+
+router.get('docs/oauth2-redirect',
+    passport.authenticate('google', {
+        scope: ['email','profile'],
+        successRedirect: '/docs',
         failureRedirect:'/auth/failure'
     })
 )

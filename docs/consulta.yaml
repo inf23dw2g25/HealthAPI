@@ -1,0 +1,115 @@
+paths:
+  /consultas:
+    get:
+      summary: Listar todas as consultas
+      security:
+       - OAuth2: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Consulta'
+
+    post:
+      summary: Criar uma nova consulta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsultaInput'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Consulta'
+
+  /consultas/{id}:
+    get:
+      summary: Obter uma consulta por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da consulta
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Consulta'
+
+    put:
+      summary: Atualizar uma consulta existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da consulta
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsultaInput'
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      summary: Excluir uma consulta existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da consulta
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    Consulta:
+      type: object
+      properties:
+        id:
+          type: integer
+        data_e_hora:
+          type: string
+          format: date-time
+        paciente_id:
+          type: integer
+        especialista_id:
+          type: integer
+        observacoes:
+          type: string
+
+    ConsultaInput:
+      type: object
+      properties:
+        data_e_hora:
+          type: string
+          format: date-time
+        paciente_id:
+          type: integer
+        especialista_id:
+          type: integer
+        observacoes:
+          type: string
+        
