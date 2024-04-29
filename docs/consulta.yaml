@@ -2,8 +2,6 @@ paths:
   /consultas:
     get:
       summary: Listar todas as consultas
-      security:
-       - OAuth2: []
       responses:
         '200':
           description: OK
