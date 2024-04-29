@@ -15,6 +15,9 @@ O objetivo do **HealthConsultationAPI** é fornecer uma plataforma segura e efic
 - **MySQL**: Utilizado como SGBD para armazenamento dos dados.
 - **OAuth 2.0**: Utilizado para implementação da camada de autenticação e autorização da google.
 - **Docker**: Utilizado para criação de containers para a aplicação multi-container (MySQL + Node.js).
+* Pode fazer o pull das nossas imagens em:
+1. docker pull inf2023dw2g25/healthapi:healthapi-mysql
+2. docker pull inf2023dw2g25/healthapi:healthapi-node 
 - **OpenAPI 3.0**: Utilizado para documentação da API.
 
 ## Funcionalidades Principais
