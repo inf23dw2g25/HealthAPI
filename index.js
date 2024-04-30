@@ -23,8 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', authRoute);
-app.use('/', middleware, consultaRoutes);
-app.use('/', middleware, especialistaRoutes);
+app.use('/', middleware ,consultaRoutes, especialistaRoutes);
 app.use('/protected', middleware, protectedController.getProtectedResource);
 
 

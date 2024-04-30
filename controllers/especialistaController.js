@@ -58,7 +58,7 @@ const especialistaController = {
     async getConsultasByEspecialista (req, res, next) {
         const especialistaId = req.params.id;
         try {
-            await especialistaService.getConsultasByEspecialistaId(especialistaId);
+            const consultas = await especialistaService.getConsultasByEspecialistaId(especialistaId);
             res.json(consultas);
     }   catch (error) {
             console.error('Erro ao obter consultas por especialista:', error);
