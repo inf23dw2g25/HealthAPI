@@ -24,7 +24,8 @@ app.use(passport.session());
 
 app.use('/', authRoute);
 app.use('/', middleware, consultaRoutes);
-app.use('/protected', middleware, protectedController.getProtectedResource);
 app.use('/', middleware, especialistaRoutes);
+app.use('/protected', middleware, protectedController.getProtectedResource);
+
 
 app.listen(process.env.NODE_PORT, ()=> console.log("listening on: " + process.env.NODE_PORT))
