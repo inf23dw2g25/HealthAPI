@@ -77,4 +77,4 @@ function deleteConsulta(id) {
     });
 }
 
-module.exports = { listConsultas, getConsultaById, createConsulta, updateConsulta, deleteConsulta };
+module.exports = { listConsultas, getConsultaById, createConsulta, updateConsulta, deleteConsulta, getConsultasByEspecialistaId };

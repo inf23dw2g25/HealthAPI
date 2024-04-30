@@ -1,0 +1,157 @@
+paths: 
+  /especialistas:
+    get:
+      summary: Listar todos os especialistas
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Especialista'
+
+    post:
+      summary: Criar um novo especialista
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EspecialistaInput'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Especialista'
+
+  /especialistas/{id}:
+    get:
+      summary: Obter um especialista por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do especialista
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Especialista'
+
+    put:
+      summary: Atualizar um especialista existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do especialista
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EspecialistaInput'
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      summary: Excluir um especialista existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do especialista
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+
+  /especialistas/{id}/consultas:
+    get:
+      summary: Obter todas as consultas de um certo especialista
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do especialista
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Consulta'
+
+components:
+  schemas:
+    Especialista:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        id_especialidade:
+          type: integer
+      required:
+        - nome
+        - id_especialidade
+
+    EspecialistaInput:
+      type: object
+      properties:
+        nome:
+          type: string
+        id_especialidade:
+          type: integer
+      required:
+        - nome
+        - id_especialidade
+
+    Consulta:
+      type: object
+      properties:
+        id:
+          type: integer
+        data_e_hora:
+          type: string
+          format: date-time
+        paciente_id:
+          type: integer
+        especialista_id:
+          type: integer
+        observacoes:
+          type: string
+
+    ConsultaInput:
+      type: object
+      properties:
+        data_e_hora:
+          type: string
+          format: date-time
+        paciente_id:
+          type: integer
+        especialista_id:
+          type: integer
+        observacoes:
+          type: string

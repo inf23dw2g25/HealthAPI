@@ -7,6 +7,7 @@ const protectedController = require('./controllers/protectedController');
 const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./controllers/swaggerSpecsController');
 const consultaRoutes = require('./routes/consultaRoute');
+const especialistaRoutes = require('./routes/especialistaRoute');
 const bodyParser = require('body-parser');
 
 require('./controllers/environmentController');
@@ -24,5 +25,6 @@ app.use(passport.session());
 app.use('/', authRoute);
 app.use('/', middleware, consultaRoutes);
 app.use('/protected', middleware, protectedController.getProtectedResource);
+app.use('/', middleware, especialistaRoutes);
 
 app.listen(process.env.NODE_PORT, ()=> console.log("listening on: " + process.env.NODE_PORT))
