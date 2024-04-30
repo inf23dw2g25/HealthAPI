@@ -51,7 +51,8 @@ function createConsulta(data_e_hora, paciente_id, especialista_id, observacoes) 
 // Função para atualizar uma consulta existente
 function updateConsulta(id, data_e_hora, paciente_id, especialista_id, observacoes) {
     return new Promise((resolve, reject) => {
-        connection.query('UPDATE Consulta SET data_e_hora = ?, paciente_id = ?, especialista_id = ?, observacoes = ? WHERE id = ?',
+        connection.query(
+            'UPDATE Consulta SET data_e_hora = COALESCE(?, data_e_hora), paciente_id = COALESCE(?, paciente_id), especialista_id = COALESCE(?, especialista_id), observacoes = COALESCE(?, observacoes) WHERE id = ?',
             [data_e_hora, paciente_id, especialista_id, observacoes, id],
             (err, results) => {
                 if (err) {
@@ -60,9 +61,11 @@ function updateConsulta(id, data_e_hora, paciente_id, especialista_id, observaco
                 }
                 console.log('Consulta atualizada com sucesso:', results);
                 resolve(results);
-            });
+            }
+        );
     });
 }
+
 
 function deleteConsulta(id) {
     return new Promise((resolve, reject) => {

@@ -53,7 +53,7 @@ A API disponibiliza os seguintes recursos:
 * Obter todos
 * Criar
 * Editar
-* Apagar
+* Apagar (Este método também apagará todas as consultas do especialista)
 * Obter Especifico
 * Obter Consultas do Especialista
 
