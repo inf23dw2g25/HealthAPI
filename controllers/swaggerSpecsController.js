@@ -23,19 +23,18 @@ const swaggerDefinition = {
         description: "Google OAuth",
         flows: {
           authorizationCode: {
-            authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth",
+            authorizationUrl: '/auth/google?scope=email',
             tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
             scopes: {
               email: "Aqui tera acesso ao email do utilizador",
-              profile: "Aqui tera acesso ao perfile do utilizador",
-              user: "Aqui tera acesso ao utilizador",
+              profile: "Aqui tera acesso ao profile do utilizador",
             },
           },
         },
       },
     },
   },
-  security: [{ google_oauth: ['profile', 'mail','user']}],
+  security: [{ google_oauth: ['mail', 'profile']}],
 };
 
 const swaggerOptions = {
