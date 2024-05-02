@@ -28,13 +28,14 @@ const swaggerDefinition = {
             scopes: {
               email: "Aqui tera acesso ao email do utilizador",
               profile: "Aqui tera acesso ao perfile do utilizador",
+              user: "Aqui tera acesso ao utilizador",
             },
           },
         },
       },
     },
   },
-  security: [{ google_oauth: [] }],
+  security: [{ google_oauth: ['profile', 'mail','user']}],
 };
 
 const swaggerOptions = {

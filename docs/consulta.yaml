@@ -2,6 +2,7 @@ paths:
   /consultas:
     get:
       summary: Listar todas as consultas
+      tags: [Consultas]  # Adicionando a tag "Consultas" para este caminho
       responses:
         '200':
           description: OK
@@ -11,9 +12,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Consulta'
-
     post:
       summary: Criar uma nova consulta
+      tags: [Consultas]  # Adicionando a tag "Consultas" para este caminho
       requestBody:
         required: true
         content:
@@ -31,6 +32,7 @@ paths:
   /consultas/{id}:
     get:
       summary: Obter uma consulta por ID
+      tags: [Consultas]  # Adicionando a tag "Consultas" para este caminho
       parameters:
         - name: id
           in: path
@@ -46,9 +48,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Consulta'
-
     put:
       summary: Atualizar uma consulta existente
+      tags: [Consultas]  # Adicionando a tag "Consultas" para este caminho
       parameters:
         - name: id
           in: path
@@ -66,9 +68,9 @@ paths:
       responses:
         '200':
           description: OK
-
     delete:
       summary: Excluir uma consulta existente
+      tags: [Consultas]  # Adicionando a tag "Consultas" para este caminho
       parameters:
         - name: id
           in: path
@@ -110,4 +112,3 @@ components:
           type: integer
         observacoes:
           type: string
-        

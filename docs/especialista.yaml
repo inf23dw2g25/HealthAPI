@@ -2,6 +2,7 @@ paths:
   /especialistas:
     get:
       summary: Listar todos os especialistas
+      tags: [Especialistas]  # Adicionando a tag "Especialistas" para este caminho
       responses:
         '200':
           description: OK
@@ -11,9 +12,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Especialista'
-
     post:
       summary: Criar um novo especialista
+      tags: [Especialistas]  # Adicionando a tag "Especialistas" para este caminho
       requestBody:
         required: true
         content:
@@ -27,10 +28,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Especialista'
-
   /especialistas/{id}:
     get:
       summary: Obter um especialista por ID
+      tags: [Especialistas]  # Adicionando a tag "Especialistas" para este caminho
       parameters:
         - name: id
           in: path
@@ -46,9 +47,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Especialista'
-
     put:
       summary: Atualizar um especialista existente
+      tags: [Especialistas]  # Adicionando a tag "Especialistas" para este caminho
       parameters:
         - name: id
           in: path
@@ -66,9 +67,9 @@ paths:
       responses:
         '200':
           description: OK
-
     delete:
       summary: Excluir um especialista existente
+      tags: [Especialistas]  # Adicionando a tag "Especialistas" para este caminho
       parameters:
         - name: id
           in: path
@@ -80,10 +81,10 @@ paths:
       responses:
         '200':
           description: OK
-
   /especialistas/{id}/consultas:
     get:
       summary: Obter todas as consultas de um certo especialista
+      tags: [Especialistas]  # Adicionando a tag "Especialistas" para este caminho
       parameters:
         - name: id
           in: path
@@ -116,7 +117,6 @@ components:
       required:
         - nome
         - id_especialidade
-
     EspecialistaInput:
       type: object
       properties:
@@ -127,7 +127,6 @@ components:
       required:
         - nome
         - id_especialidade
-
     Consulta:
       type: object
       properties:
@@ -142,7 +141,6 @@ components:
           type: integer
         observacoes:
           type: string
-
     ConsultaInput:
       type: object
       properties:

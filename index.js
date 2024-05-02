@@ -8,6 +8,7 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./controllers/swaggerSpecsController');
 const consultaRoutes = require('./routes/consultaRoute');
 const especialistaRoutes = require('./routes/especialistaRoute');
+const especialidadeRoutes = require('./routes/especialidadeRoute');
 const bodyParser = require('body-parser');
 
 require('./controllers/environmentController');
@@ -23,7 +24,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', authRoute);
-app.use('/', middleware ,consultaRoutes, especialistaRoutes);
+app.use('/', middleware, consultaRoutes);
+app.use('/', middleware, especialidadeRoutes);
+app.use('/', middleware, especialistaRoutes);
 app.use('/protected', middleware, protectedController.getProtectedResource);
 
 

@@ -1,0 +1,135 @@
+paths: 
+  /especialidades:
+    get:
+      summary: Listar todas as especialidades
+      tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Especialidade'
+    post:
+      summary: Criar uma nova especialidade
+      tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EspecialidadeInput'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Especialidade'
+  /especialidades/{id}:
+    get:
+      summary: Obter uma especialidade por ID
+      tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da especialidade
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Especialidade'
+    put:
+      summary: Atualizar uma especialidade existente
+      tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da especialidade
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EspecialidadeInput'
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Excluir uma especialidade existente
+      tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da especialidade
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+  /especialidades/{id}/especialistas:
+    get:
+      summary: Obter todos os especialistas de uma certa especialidade
+      tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da especialidade
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Especialista'
+
+components:
+  schemas:
+    Especialidade:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+      required:
+        - nome
+    EspecialidadeInput:
+      type: object
+      properties:
+        nome:
+          type: string
+      required:
+        - nome
+    Especialista:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        id_especialidade:
+          type: integer
+      required:
+        - nome
+        - id_especialidade

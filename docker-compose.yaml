@@ -13,8 +13,8 @@ services:
       - "${MYSQL_PORT}:3306"
     healthcheck:
           test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-          timeout: 5s
-          retries: 10
+          timeout: 10s
+          retries: 15
     networks:
       - healthapi-network
 
