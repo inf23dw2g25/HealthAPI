@@ -44,7 +44,7 @@ A API disponibiliza os seguintes recursos:
 * Obter todos
 * Criar
 * Editar
-* Apagar
+* Apagar (Este método também apagará todas as consultas do paciente)
 * Obter Especifico
 * Obter Consultas do Paciente
 * Obter Historico do Paciente
@@ -61,8 +61,8 @@ A API disponibiliza os seguintes recursos:
 * Obter todas
 * Criar
 * Editar
-* Apagar
-* Obter Especifica
+* Apagar (Este método também apagará todos os especialistas pertencentes a esta especialidade)
+* Obter Especialidade Especifica
 * Obter Especialistas por especialidade.
 
 5. **Historico**: Permite a visualização do Histórico do paciente relacao de um para um com o paciente o histórico é como se fosse um livro com a ficha do paciente.
@@ -72,10 +72,14 @@ A API disponibiliza os seguintes recursos:
 * Apagar
 * Obter Especifico
 
+#### Relações
+
+* **Historico** pode ter um **Paciente** e um **Paciente** pode ter um **Historico**. 1 <-> 1
+* **Paciente** pode ter várias **Consultas** e uma **Consulta** só pode ter um **Paciente**. N <-> 1 e 1 <-> 1
+* **Especialista** pode ter várias **Consultas** e uma **Consulta** só pode ter um **Especialista**. N <-> 1 e 1 <-> 1
+* **Especialidade** pode ter várias **Especialista** e uma **Especialista** só pode ter um **Especialidade**. N <-> 1 e 1 <-> 1
+
 ![Diagrama de Classes](./relatórios%20e%20documentos/Diagrama%20de%20classes.png)
-
-
-
 
 ### Autenticação e Autorização
 
@@ -107,6 +111,10 @@ cd HealthAPI
 docker compose up --build
 ~~~
 
+## POSTMAN COLECTION
+
+## MARKDOWN PDF
+![Readme PDF](./relatórios%20e%20documentos/README.pdf)
 ## Conclusão
 
 O **HealthConsultationAPI** é uma aplicação robusta e segura que atende aos requisitos propostos. Implementando uma camada de serviços RESTful protegida por autenticação e autorização, a API oferece uma solução completa para marcação de consultas médicas e acesso ao histórico dos pacientes. Com documentação detalhada e fácil integração, o **HealthConsultationAPI** é uma ferramenta valiosa para profissionais de saúde e pacientes.

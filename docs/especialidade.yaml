@@ -1,7 +1,7 @@
 paths: 
   /especialidades:
     get:
-      summary: Listar todas as especialidades
+      summary: Listar todas as especialidades em que 1-Clinica Geral ; 2 - Pediatria; 3- Dermatologia; 4-Ginecologia; 5- Ortopedia; 6-Cardiologia; 7-Neurologia; 8-Oftalmologia; 9- Oncologia; 10-Endocrinologia; 11-Otorrinolaringologia; 12-Urologia; 13 - Gastroenterologia; 14- Nefrologia; 15 - Radiologia; 16 - Anestesiologia ; 17 -Pneumologia; 18 - Hematologia; 19 - Reumatologia;
       tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
       responses:
         '200':
@@ -30,7 +30,7 @@ paths:
                 $ref: '#/components/schemas/Especialidade'
   /especialidades/{id}:
     get:
-      summary: Obter uma especialidade por ID
+      summary: Obter uma especialidade por ID em que 1-Clinica Geral ; 2 - Pediatria; 3- Dermatologia; 4-Ginecologia; 5- Ortopedia; 6-Cardiologia; 7-Neurologia; 8-Oftalmologia; 9- Oncologia; 10-Endocrinologia; 11-Otorrinolaringologia; 12-Urologia; 13 - Gastroenterologia; 14- Nefrologia; 15 - Radiologia; 16 - Anestesiologia ; 17 -Pneumologia; 18 - Hematologia; 19 - Reumatologia;
       tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
       parameters:
         - name: id
@@ -48,7 +48,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Especialidade'
     put:
-      summary: Atualizar uma especialidade existente
+      summary: Atualizar uma especialidade existente em que 1-Clinica Geral ; 2 - Pediatria; 3- Dermatologia; 4-Ginecologia; 5- Ortopedia; 6-Cardiologia; 7-Neurologia; 8-Oftalmologia; 9- Oncologia; 10-Endocrinologia; 11-Otorrinolaringologia; 12-Urologia; 13 - Gastroenterologia; 14- Nefrologia; 15 - Radiologia; 16 - Anestesiologia ; 17 -Pneumologia; 18 - Hematologia; 19 - Reumatologia;
       tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
       parameters:
         - name: id
@@ -68,7 +68,7 @@ paths:
         '200':
           description: OK
     delete:
-      summary: Excluir uma especialidade existente
+      summary: Excluir uma especialidade existente em que 1-Clinica Geral ; 2 - Pediatria; 3- Dermatologia; 4-Ginecologia; 5- Ortopedia; 6-Cardiologia; 7-Neurologia; 8-Oftalmologia; 9- Oncologia; 10-Endocrinologia; 11-Otorrinolaringologia; 12-Urologia; 13 - Gastroenterologia; 14- Nefrologia; 15 - Radiologia; 16 - Anestesiologia ; 17 -Pneumologia; 18 - Hematologia; 19 - Reumatologia; Ao excluir este recurso tambem exclui os seus especialistas.
       tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
       parameters:
         - name: id
@@ -83,7 +83,7 @@ paths:
           description: OK
   /especialidades/{id}/especialistas:
     get:
-      summary: Obter todos os especialistas de uma certa especialidade
+      summary: Obter todos os especialistas de uma certa especialidade em que 1-Clinica Geral ; 2 - Pediatria; 3- Dermatologia; 4-Ginecologia; 5- Ortopedia; 6-Cardiologia; 7-Neurologia; 8-Oftalmologia; 9- Oncologia; 10-Endocrinologia; 11-Otorrinolaringologia; 12-Urologia; 13 - Gastroenterologia; 14- Nefrologia; 15 - Radiologia; 16 - Anestesiologia ; 17 -Pneumologia; 18 - Hematologia; 19 - Reumatologia;
       tags: [Especialidades]  # Adicionando a tag "Especialidades" para este caminho
       parameters:
         - name: id
