@@ -1,0 +1,152 @@
+paths:
+  /pacientes:
+    get:
+      summary: Listar todos os pacientes
+      tags: [Pacientes]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paciente'
+    post:
+      summary: Criar um novo paciente
+      tags: [Pacientes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PacienteInput'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+
+  /pacientes/{id}:
+    get:
+      summary: Obter um paciente por ID
+      tags: [Pacientes]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do paciente
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paciente'
+    put:
+      summary: Atualizar um paciente existente
+      tags: [Pacientes]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do paciente
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PacienteInput'
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Excluir um paciente existente
+      tags: [Pacientes]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do paciente
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+
+  /pacientes/{id}/consultas:
+    get:
+      summary: Listar todas as consultas de um paciente
+      tags: [Pacientes]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do paciente
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Consulta'
+
+  /pacientes/{id}/historicos:
+    get:
+      summary: Listar o  histórico de um paciente
+      tags: [Pacientes]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do paciente
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Historico'
+
+components:
+  schemas:
+    Paciente:
+      type: object
+      properties:
+        id:
+          type: integer
+        numero_de_utente:
+          type: integer
+        nome:
+          type: string
+        contacto:
+          type: string
+
+    PacienteInput:
+      type: object
+      properties:
+        numero_de_utente:
+          type: integer
+        nome:
+          type: string
+        contacto:
+          type: string

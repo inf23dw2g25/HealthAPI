@@ -1,0 +1,112 @@
+paths:
+  /historicos:
+    get:
+      summary: Listar todos os históricos
+      tags: [Historicos]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Historico'
+    post:
+      summary: Criar um novo histórico
+      tags: [Historicos]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricoInput'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Historico'
+
+  /historicos/{id}:
+    get:
+      summary: Obter um histórico por ID
+      tags: [Historicos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do histórico
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Historico'
+    put:
+      summary: Atualizar um histórico existente
+      tags: [Historicos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do histórico
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoricoInput'
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Excluir um histórico existente
+      tags: [Historicos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do histórico
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    Historico:
+      type: object
+      properties:
+        id:
+          type: integer
+        historico:
+          type: string
+        alergias:
+          type: string
+        medicacao:
+          type: string
+        id_paciente:
+          type: integer
+
+    HistoricoInput:
+      type: object
+      properties:
+        historico:
+          type: string
+        alergias:
+          type: string
+        medicacao:
+          type: string
+        id_paciente:
+          type: integer

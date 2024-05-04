@@ -10,6 +10,9 @@ const swaggerSpec = require('./controllers/swaggerSpecsController');
 const consultaRoutes = require('./routes/consultaRoute');
 const especialistaRoutes = require('./routes/especialistaRoute');
 const especialidadeRoutes = require('./routes/especialidadeRoute');
+const historicoRoutes = require('./routes/historicoRoute');
+const pacienteRoutes = require('./routes/pacienteRoute');
+
 const bodyParser = require('body-parser');
 
 require('./controllers/environmentController');
@@ -28,6 +31,8 @@ app.use('/', authRoute);
 app.use('/', checkSwaggerAuth, consultaRoutes);
 app.use('/', checkSwaggerAuth, especialidadeRoutes);
 app.use('/', checkSwaggerAuth, especialistaRoutes);
+app.use('/', checkSwaggerAuth, historicoRoutes);
+app.use('/', checkSwaggerAuth, pacienteRoutes);
 app.use('/protected', middleware, protectedController.getProtectedResource);
 
 
