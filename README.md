@@ -44,7 +44,7 @@ A API disponibiliza os seguintes recursos:
 * Obter todos
 * Criar
 * Editar
-* Apagar (Este método também apagará todas as consultas do paciente)
+* Apagar (Este método também apagará todas as consultas e historico do paciente)
 * Obter Especifico
 * Obter Consultas do Paciente
 * Obter Historico do Paciente
