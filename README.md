@@ -115,6 +115,4 @@ docker compose up --build
 
 ## MARKDOWN PDF
 ![Readme PDF](./relatórios%20e%20documentos/README.pdf)
-## Conclusão
 
-O **HealthConsultationAPI** é uma aplicação robusta e segura que atende aos requisitos propostos. Implementando uma camada de serviços RESTful protegida por autenticação e autorização, a API oferece uma solução completa para marcação de consultas médicas e acesso ao histórico dos pacientes. Com documentação detalhada e fácil integração, o **HealthConsultationAPI** é uma ferramenta valiosa para profissionais de saúde e pacientes.
