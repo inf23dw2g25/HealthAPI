@@ -1,0 +1,72 @@
+paths:
+  /perfil:
+    get:
+      summary: Obtém o perfil do usuário do Google
+      tags: [Perfil Google]  # Adicionando a tag "Perfil" para este caminho
+      description: |
+        Esta rota permite obter o perfil do usuário do Google autenticado.
+      responses:
+        '200':
+          description: Perfil do usuário obtido com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerfilGoogle'
+        '401':
+          description: Não autorizado - Falha na autenticação
+components:
+  schemas:
+    PerfilGoogle:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único do usuário Google
+        nome:
+          type: object
+          properties:
+            primeiro:
+              type: string
+              description: Primeiro nome do usuário
+            último:
+              type: string
+              description: Último nome do usuário
+          required:
+            - primeiro
+            - último
+        email:
+          type: string
+          format: email
+          description: Endereço de e-mail do usuário
+        foto_url:
+          type: string
+          format: uri
+          description: URL da foto de perfil do usuário
+        género:
+          type: string
+          description: Gênero do usuário
+        localização:
+          type: string
+          description: Localização do usuário
+        idioma:
+          type: string
+          description: Idioma preferido do usuário
+        data_nascimento:
+          type: string
+          format: date
+          description: Data de nascimento do usuário
+        país:
+          type: string
+          description: País do usuário
+        país_iso:
+          type: string
+          description: Código ISO do país do usuário
+  securitySchemes:
+      OAuth2:
+        type: oauth2
+        flows:
+          authorizationCode:
+            authorizationUrl: https://accounts.google.com/o/oauth2/auth
+            tokenUrl: https://accounts.google.com/o/oauth2/token
+            scopes:
+              profile: Acesso ao perfil do usuário

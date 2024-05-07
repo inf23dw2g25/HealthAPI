@@ -64,6 +64,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EspecialidadeInput'
+      security:
+        - OAuth2:
+            - profile
       responses:
         '200':
           description: OK
@@ -133,3 +136,12 @@ components:
       required:
         - nome
         - id_especialidade
+  securitySchemes:
+      OAuth2:
+        type: oauth2
+        flows:
+          authorizationCode:
+            authorizationUrl: https://accounts.google.com/o/oauth2/auth
+            tokenUrl: https://accounts.google.com/o/oauth2/token
+            scopes:
+              profile: Acesso ao perfil do usuário

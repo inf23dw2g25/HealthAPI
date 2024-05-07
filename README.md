@@ -115,6 +115,21 @@ docker compose up --build
 
 ## MARKDOWN PDF
 ![Readme PDF](./relatórios%20e%20documentos/README.pdf)
-## Conclusão
 
-O **HealthConsultationAPI** é uma aplicação robusta e segura que atende aos requisitos propostos. Implementando uma camada de serviços RESTful protegida por autenticação e autorização, a API oferece uma solução completa para marcação de consultas médicas e acesso ao histórico dos pacientes. Com documentação detalhada e fácil integração, o **HealthConsultationAPI** é uma ferramenta valiosa para profissionais de saúde e pacientes.
+## Implementações extras e erros :
+Encontramos este erro sempre que tentamos obter o perfil do google:
+~~~Node
+Erro ao obter o perfil do usuário: TypeError: Cannot read properties of undefined (reading 'accessToken')
+node_healthapi   |     at Object.getPerfil (/app/services/perfilService.js:15:34)
+node_healthapi   |     at getProfile (/app/controllers/perfilController.js:6:43)
+node_healthapi   |     at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)
+node_healthapi   |     at next (/app/node_modules/express/lib/router/route.js:149:13)
+node_healthapi   |     at Route.dispatch (/app/node_modules/express/lib/router/route.js:119:3)
+node_healthapi   |     at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)
+node_healthapi   |     at /app/node_modules/express/lib/router/index.js:284:15
+node_healthapi   |     at Function.process_params (/app/node_modules/express/lib/router/index.js:346:12)
+node_healthapi   |     at next (/app/node_modules/express/lib/router/index.js:280:10)
+node_healthapi   |     at Function.handle (/app/node_modules/express/lib/router/index.js:175:3)
+node_healthapi   | perfil Controller: undefined
+~~~
+A documentação diz-nos que para obter o perfil está deprecated , porem tentamos ainda assim sem sucesso.

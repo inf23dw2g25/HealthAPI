@@ -1,6 +1,5 @@
 const swaggerJSDoc = require("swagger-jsdoc");
 require("./environmentController");
-// swaggerSpecs.js
 
 const swaggerDefinition = {
   openapi: "3.0.0",
@@ -23,18 +22,18 @@ const swaggerDefinition = {
         description: "Google OAuth",
         flows: {
           authorizationCode: {
-            authorizationUrl: '/auth/google?scope=email',
+            authorizationUrl: "https://accounts.google.com/o/oauth2/auth",
             tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
             scopes: {
-              email: "Aqui tera acesso ao email do utilizador",
-              profile: "Aqui tera acesso ao profile do utilizador",
+              email: "Aqui terá acesso ao email do utilizador",
+              profile: "Aqui terá acesso ao profile do utilizador",
             },
           },
         },
       },
     },
   },
-  security: [{ google_oauth: ['mail', 'profile']}],
+  security: [{ google_oauth: ["mail", "profile"] }],
 };
 
 const swaggerOptions = {
