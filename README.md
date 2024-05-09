@@ -27,8 +27,6 @@ docker pull inf2023dw2g25/healthapi:healthapi-node
 ~~~
 - **OpenAPI 3.0**: Utilizado para documentação da API.
 
-## Funcionalidades Principais
-
 ### Recursos Disponíveis
 
 A API disponibiliza os seguintes recursos:
@@ -83,11 +81,11 @@ A API disponibiliza os seguintes recursos:
 
 ### Autenticação e Autorização
 
-A API implementa uma camada de autenticação e autorização utilizando OAuth 2.0 da google. Os usuários devem autenticar-se para acessar os recursos da API e apenas têm acesso aos seus próprios recursos.
+A API implementa uma camada de autenticação e autorização utilizando OAuth 2.0 da google. Os usuários devem autenticar-se para acessar aos metodos (POST, PUT , DELETE) dos recursos da API , sem a autheticação só estão autorizados a ver mos metodos (GET).
 
 ### Documentação da API
 
-A API é documentada utilizando o formato OpenAPI 3.0. A documentação detalha todos os endpoints disponíveis, os métodos HTTP suportados, os parâmetros necessários e as respostas esperadas.
+A API é documentada utilizando o formato OpenAPI 3.0. A documentação detalha todos os endpoints disponíveis, os métodos HTTP suportados, os parâmetros necessários e as respostas esperadas. na pasta docs.
 
 ## Repositórios
 
@@ -111,12 +109,19 @@ cd HealthAPI
 docker compose up --build
 ~~~
 
+4. Para a autheticação tem de inserir as seguintes credenciais:
+~~~~CMD
+client id : 860907029773-f1k556igmjvjdm8lpg0cja24olm2mhnf.apps.googleusercontent.com
+client secret : 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
+~~~~
+Selecione os quadrados profile e email para conseguirem-se authenticar.
+
 ## POSTMAN COLECTION
 
 ## MARKDOWN PDF
 ![Readme PDF](./relatórios%20e%20documentos/README.pdf)
 
-## Implementações extras e erros :
+## Implementações extras e erros dificeis:
 Encontramos este erro sempre que tentamos obter o perfil do google:
 ~~~Node
 Erro ao obter o perfil do usuário: TypeError: Cannot read properties of undefined (reading 'accessToken')
@@ -133,3 +138,7 @@ node_healthapi   |     at Function.handle (/app/node_modules/express/lib/router/
 node_healthapi   | perfil Controller: undefined
 ~~~
 A documentação diz-nos que para obter o perfil está deprecated , porem tentamos ainda assim sem sucesso.
+
+Erro corrigido tivemos de optar por fazer uma modificaçao no middleware para usar o token Bearer apos autheticacão.
+
+Queriamos implementar uma parte de recursos para o profile do user , porem sem sucesso a obter do google api 
