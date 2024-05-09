@@ -30,11 +30,10 @@ app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//routes API DOCS
-app.use("/", authRoute);
+//routes API
 app.use(
   "/",
-  middleware.isAuthenticated,
+  authRoute,
   consultaRoutes,
   especialidadeRoutes,
   especialistaRoutes,
