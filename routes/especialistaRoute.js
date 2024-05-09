@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const especialistaController = require("../controllers/especialistaController");
+const middleware = require("../controllers/middlewareController");
 
 router.get("/especialistas", especialistaController.getAll);
 router.get("/especialistas/:id", especialistaController.getById);

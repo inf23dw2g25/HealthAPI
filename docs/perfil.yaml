@@ -1,0 +1,54 @@
+getPerfil:
+  description: "Endpoint para obter o perfil do usuário"
+  method: "GET"
+  path: "/perfil"
+  middleware: "middleware.isAuthenticatedBool"
+  responses:
+    200:
+      description: "Perfil do usuário obtido com sucesso"
+      schema:
+        type: "object"
+        properties:
+          id:
+            type: "string"
+            description: "ID do usuário"
+          nome:
+            type: "object"
+            properties:
+              primeiro:
+                type: "string"
+                description: "Primeiro nome do usuário"
+              último:
+                type: "string"
+                description: "Último nome do usuário"
+          email:
+            type: "string"
+            description: "Endereço de email do usuário"
+          foto_url:
+            type: "string"
+            description: "URL da foto do usuário"
+          genero:
+            type: "string"
+            description: "Gênero do usuário"
+          localizacao:
+            type: "string"
+            description: "Localização do usuário"
+          idioma:
+            type: "string"
+            description: "Idioma do usuário"
+    401:
+      description: "Usuário não autenticado"
+      schema:
+        type: "object"
+        properties:
+          message:
+            type: "string"
+            description: "Mensagem de erro"
+    500:
+      description: "Erro ao obter o perfil do usuário"
+      schema:
+        type: "object"
+        properties:
+          message:
+            type: "string"
+            description: "Mensagem de erro"
