@@ -1,6 +1,6 @@
 const express = require("express");
 const pacienteController = require("../controllers/pacienteController");
-
+const middleware = require("../controllers/middlewareController");
 const router = express.Router();
 
 // Rotas para manipular as operações CRUD das consultas
