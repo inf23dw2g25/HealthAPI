@@ -1,10 +1,9 @@
 const { google } = require("google-auth-library");
-const middleware = require("../controllers/middlewareController");
 
 async function getPerfil(req, res) {
   try {
     // Verifique se o usuário está autenticado chamando o middleware
-    if (!middleware.isAuthenticatedBool(req)) {
+    if (!req.user || !req.user.accessToken) {
       return res.status(401).json({ message: "Usuário não autenticado" });
     }
 
@@ -20,7 +19,7 @@ async function getPerfil(req, res) {
 
     // Obtenha os detalhes do perfil do usuário
     const { data } = await oauth2.userinfo.get();
-    console.log("perfil Service data: " + data);
+    console.dir(data, { depth: null }); // Exibe os detalhes de data sem limitação de profundidade
 
     // Construa o objeto de perfil do usuário com os dados recebidos
     const perfilUsuario = {
@@ -36,11 +35,15 @@ async function getPerfil(req, res) {
       idioma: data.language,
     };
 
+    console.dir(perfilUsuario, { depth: null }); // Exibe os detalhes de perfilUsuario sem limitação de profundidade
+
     // Envie o perfil do usuário como resposta
-    res.json(perfilUsuario);
+    return res.json(perfilUsuario);
   } catch (error) {
     console.error("Erro ao obter o perfil do usuário:", error);
-    res.status(500).json({ message: "Erro ao obter o perfil do usuário" });
+    return res
+      .status(500)
+      .json({ message: "Erro ao obter o perfil do usuário" });
   }
 }
 

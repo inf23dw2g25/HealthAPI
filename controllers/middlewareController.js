@@ -11,7 +11,7 @@ function isAuthenticated(req, res, next) {
       .json({ message: "Autenticação necessária para continuar" });
   }
   const [type, token] = req.headers.authorization.split(" ");
-  if (type !== "Bearer") {
+  if (type !== "Bearer" || type !== "code") {
     return res.status(401).json({ message: "Tipo de autenticação inválido" });
   }
   next();

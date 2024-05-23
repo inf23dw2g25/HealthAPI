@@ -4,6 +4,7 @@ const passport = require("passport");
 const session = require("express-session");
 const swaggerUI = require("swagger-ui-express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 //Controllers
 const middleware = require("./controllers/middlewareController");
@@ -22,6 +23,7 @@ const pacienteRoutes = require("./routes/pacienteRoute");
 const perfilRoutes = require("./routes/perfilRoute");
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));

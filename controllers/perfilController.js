@@ -4,12 +4,13 @@ const profileController = {
   async getProfile(req, res, next) {
     try {
       const perfil = await profileService.getPerfil(req, res);
+      console.log("perfil Controller: ", perfil); // Verifique o perfil recebido
       res.json(perfil);
-      console.log("perfil Controller: " + perfil);
     } catch (error) {
-      console.error("Erro a obter todos o perfil", error);
+      console.error("Erro ao obter o perfil:", error);
       next(error);
     }
   },
 };
+
 module.exports = profileController;
