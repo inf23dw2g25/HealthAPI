@@ -5,20 +5,8 @@ const middleware = require("../controllers/middlewareController");
 
 router.get("/historicos", historicoController.getAll);
 router.get("/historicos/:id", historicoController.getById);
-router.post(
-  "/historicos",
-  middleware.isAuthenticated,
-  historicoController.create
-);
-router.put(
-  "/historicos/:id",
-  middleware.isAuthenticated,
-  historicoController.update
-);
-router.delete(
-  "/historicos/:id",
-  middleware.isAuthenticated,
-  historicoController._delete
-);
+router.post("/historicos", historicoController.create);
+router.put("/historicos/:id", historicoController.update);
+router.delete("/historicos/:id", historicoController._delete);
 
 module.exports = router;

@@ -1,7 +1,8 @@
 const passport = require("passport");
 
 function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
+  console.log(req.authorization);
+  req.authorization ? next() : res.sendStatus(401);
 }
 
 function isAuthenticated(req, res, next) {

@@ -4,6 +4,6 @@ const perfilController = require("../controllers/perfilController");
 const router = express.Router();
 
 // Rota para obter o perfil do usuário
-router.get("/perfil", middleware.isAuthenticated, perfilController.getProfile);
+router.get("/perfil", perfilController.getProfile);
 
 module.exports = router;
